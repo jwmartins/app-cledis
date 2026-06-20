@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Formulario S-140 · Con amor para Cledis 💕</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper:#FBF7EE; --ink:#26201a; --muted:#8a8073; --hint:#aaa193;
+  --line:#e4dccb; --card:#fffdf8; --accent:#0f5c54; --accent-d:#0b463f;
+  --warn:#c2410c; --radius:12px;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font-family:'IBM Plex Sans','Segoe UI',system-ui,-apple-system,sans-serif;font-size:15px;line-height:1.5}
+h1,h2,h3{font-family:'Fraunces','Georgia',serif}
+header.top{padding:24px 28px 18px;border-bottom:1px solid var(--line)}
+.title-row{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:16px}
+h1{font-size:28px;font-weight:600;margin:0;letter-spacing:-.01em}
+.sub{color:var(--muted);font-size:13px;font-weight:500}
+a.link-app{
+  margin-left:auto;font-size:13px;font-weight:500;color:var(--accent);
+  text-decoration:none;padding:6px 13px;border:1.5px solid var(--accent);border-radius:8px;
+  white-space:nowrap;transition:background .15s,color .15s
+}
+a.link-app:hover{background:var(--accent);color:#fff}
+.grid-enc{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+.enc-full{grid-column:1/-1}
+.lab{display:block;font-size:11px;color:var(--muted);margin-bottom:4px;font-weight:600;text-transform:uppercase;letter-spacing:.04em}
+input{width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:8px;font-size:14px;
+  background:#fff;color:var(--ink);font-family:inherit}
+input:focus{outline:2px solid var(--accent);outline-offset:1px}
+input[type=number]{-moz-appearance:textfield}
+input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
+.toolbar{
+  display:flex;gap:8px;align-items:center;flex-wrap:wrap;
+  padding:12px 28px;border-bottom:1px solid var(--line);
+  position:sticky;top:0;z-index:20;background:var(--paper);
+}
+.btn{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:8px 14px;border-radius:9px;cursor:pointer;
+  font:inherit;font-size:13.5px;font-weight:500;
+  border:1px solid var(--line);background:#fff;color:var(--ink);
+  transition:border-color .15s
+}
+.btn:hover{border-color:var(--accent)}
+.btn.pri{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn.pri:hover{background:var(--accent-d)}
+main{padding:20px 28px 80px;max-width:940px;margin:0 auto;display:flex;flex-direction:column;gap:18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+.sec-h{color:#fff;padding:9px 16px;font-size:15px;font-weight:600;letter-spacing:.02em}
+.row{padding:11px 16px;border-top:1px solid var(--line)}
+.row-head{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px}
+.row-name{font-size:14px;font-weight:500;flex:1 1 180px}
+.selectors{display:flex;gap:10px;flex-wrap:wrap}
+.selectors label{flex:1 1 200px;min-width:150px}
+.num-ord{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:22px;height:22px;border-radius:50%;
+  font-size:11px;font-weight:700;color:#fff;flex-shrink:0
+}
+.icon-btn{
+  border:none;background:transparent;cursor:pointer;
+  padding:3px 7px;border-radius:6px;font-size:14px;
+  color:#bba;line-height:1;display:inline-flex;align-items:center
+}
+.icon-btn:hover{color:var(--warn);background:#fef3ed}
+.greeting-banner{
+  background:linear-gradient(135deg,#fff0f6,#fde8d8);
+  border-bottom:2px solid #f9b8d3;
+  padding:16px 28px;
+  text-align:center;
+  font-size:19px;
+  color:#7a2040;
+  font-family:'Fraunces','Georgia',serif;
+  font-weight:600;
+  letter-spacing:.01em;
+}
+.love-modal-overlay{
+  display:none;position:fixed;inset:0;
+  background:rgba(0,0,0,.48);
+  z-index:100;align-items:center;justify-content:center;
+}
+.love-modal-overlay.open{display:flex}
+.love-modal-box{
+  background:#fffdf8;
+  border-radius:22px;
+  padding:38px 44px;
+  max-width:460px;width:90%;
+  text-align:center;
+  box-shadow:0 18px 70px rgba(0,0,0,.28);
+  animation:popIn .28s cubic-bezier(.34,1.56,.64,1);
+}
+@keyframes popIn{
+  from{transform:scale(.78);opacity:0}
+  to{transform:scale(1);opacity:1}
+}
+.lm-emoji{font-size:52px;margin-bottom:10px;line-height:1.3}
+.lm-title{font-family:'Fraunces','Georgia',serif;font-size:28px;font-weight:600;color:#7E0024;margin-bottom:10px}
+.lm-text{font-size:15px;color:#444;line-height:1.7;margin-bottom:26px}
+.lm-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+@media print{.greeting-banner,.love-modal-overlay,.zoom-bar,.help-card{display:none!important}}
+.zoom-bar{
+  display:flex;gap:8px;align-items:center;
+  padding:8px 28px;border-bottom:1px solid var(--line);
+  background:#f4f0e6;flex-wrap:wrap;
+}
+.zoom-label{font-size:13px;color:var(--muted);font-weight:600;margin-right:2px}
+.zoom-btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  min-width:48px;height:40px;
+  border-radius:10px;cursor:pointer;
+  font:inherit;font-weight:700;
+  border:1.5px solid var(--line);background:#fff;color:var(--ink);
+  transition:border-color .15s,background .15s;
+  padding:0 12px;
+}
+.zoom-btn:hover{border-color:var(--accent);background:#f0faf8}
+.zoom-btn.active{border-color:var(--accent);background:var(--accent);color:#fff}
+.zoom-hint{font-size:12px;color:var(--hint);margin-left:4px}
+.help-card{
+  background:linear-gradient(135deg,#f0faf8,#e8f4f1);
+  border:1.5px solid #b2d8cf;
+  border-radius:var(--radius);
+  overflow:hidden;
+}
+.help-card-header{
+  display:flex;align-items:center;gap:10px;
+  padding:13px 18px;cursor:pointer;
+  background:linear-gradient(135deg,#0f5c54,#0b7a6a);
+  color:#fff;user-select:none;
+}
+.help-card-title{font-size:16px;font-weight:600;flex:1}
+.help-card-toggle{font-size:13px;opacity:.85}
+.help-body{padding:18px 20px;display:flex;flex-direction:column;gap:12px}
+.help-step{display:flex;gap:12px;align-items:flex-start}
+.help-icon{font-size:22px;flex-shrink:0;line-height:1.3}
+.help-text{font-size:14.5px;line-height:1.6;color:#2a3d38}
+.help-text strong{color:#0f5c54}
+.help-tip{
+  background:#fff8e6;border:1px solid #f0d080;border-radius:9px;
+  padding:10px 14px;font-size:13.5px;color:#7a5800;line-height:1.6;
+  display:flex;gap:10px;align-items:flex-start;
+}
+.toast{
+  position:fixed;bottom:22px;left:50%;transform:translateX(-50%);
+  background:var(--ink);color:#fff;padding:10px 18px;border-radius:10px;
+  font-size:14px;box-shadow:0 8px 30px rgba(0,0,0,.25);z-index:50;
+  opacity:0;transition:opacity .2s;pointer-events:none
+}
+.toast.show{opacity:1}
+#printSheet{display:none}
+@media print{
+  body>*{display:none!important}
+  #printSheet{display:block!important}
+  #printSheet,#printSheet *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
+  @page{margin:18mm 20mm 14mm 20mm}
+}
+</style>
+</head>
+<body>
+
+<div class="greeting-banner">
+  🌸 ¡Hola Cledis! 🌼 &nbsp; No olvides que te queremos mucho 💕 &nbsp; 🌺 ✨ 🤍
+</div>
+
+<header class="top">
+  <div class="grid-enc">
+    <label><span class="lab">Congregación</span><input id="f-cong" value="Pozo del Molle"></label>
+    <label><span class="lab">Semana / fecha</span><input id="f-sem" placeholder="Ej. 9-15 jun. 2025"></label>
+    <label class="enc-full"><span class="lab">Lectura semanal de la Biblia (libro y capítulos)</span><input id="f-lec" placeholder="Ej. Jeremías 4-6"></label>
+  </div>
+</header>
+
+<div class="zoom-bar">
+  <span class="zoom-label">👁️ Tamaño del texto:</span>
+  <button class="zoom-btn" id="z1" onclick="setZoom(1)">A</button>
+  <button class="zoom-btn" id="z2" onclick="setZoom(2)">A+</button>
+  <button class="zoom-btn active" id="z3" onclick="setZoom(3)">A++</button>
+  <button class="zoom-btn" id="z4" onclick="setZoom(4)">A+++</button>
+  <span class="zoom-hint">← Elegí el tamaño que mejor veas</span>
+</div>
+
+<div class="toolbar">
+  <button class="btn" onclick="limpiar()">Limpiar todo</button>
+  <span style="flex:1"></span>
+  <button class="btn pri" onclick="generarPDF()">Imprimir / Generar PDF</button>
+</div>
+
+<main>
+
+  <!-- AYUDA PARA CLEDIS -->
+  <div class="help-card">
+    <div class="help-card-header" onclick="toggleHelp()">
+      <span style="font-size:20px">📋</span>
+      <span class="help-card-title">¿Cómo completar el formulario? — Leé esto primero</span>
+      <span class="help-card-toggle" id="helpToggleText">▲ Ocultar</span>
+    </div>
+    <div class="help-body" id="helpBody">
+      <div class="help-step">
+        <span class="help-icon">1️⃣</span>
+        <span class="help-text"><strong>Arriba de todo</strong> completá la semana (por ejemplo: <em>"16-22 jun. 2025"</em>) y la lectura de la Biblia de esa semana (por ejemplo: <em>"Jeremías 4-6"</em>).</span>
+      </div>
+      <div class="help-step">
+        <span class="help-icon">2️⃣</span>
+        <span class="help-text"><strong>En cada recuadro de colores</strong> escribí el nombre y apellido de la persona asignada. Hacé clic dentro del casillero blanco y escribí.</span>
+      </div>
+      <div class="help-step">
+        <span class="help-icon">3️⃣</span>
+        <span class="help-text">En las secciones <strong>"Seamos mejores maestros"</strong> y <strong>"Nuestra vida cristiana"</strong>, si necesitás más lugares usá el botón <strong>"+ Agregar parte"</strong>.</span>
+      </div>
+      <div class="help-step">
+        <span class="help-icon">4️⃣</span>
+        <span class="help-text">Cuando terminés de completar todo, apretá el botón verde <strong>"Imprimir / Generar PDF"</strong> que está en la barra de arriba. ¡Y listo!</span>
+      </div>
+      <div class="help-tip">
+        <span style="font-size:20px">💡</span>
+        <span><strong>¿Te equivocaste?</strong> No te preocupes. Podés hacer clic sobre cualquier casillero y corregirlo. Si querés borrar todo y empezar de nuevo, apretá el botón <strong>"Limpiar todo"</strong>.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CANCIONES -->
+  <section class="card">
+    <div class="sec-h" style="background:#374151">Canciones</div>
+    <div style="padding:12px;display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px">
+      <label><span class="lab">Canción de apertura</span>
+        <input id="f-cancion-ini" type="number" min="1" max="151" placeholder="N.º"></label>
+      <label><span class="lab">Canción (Nuestra vida cristiana)</span>
+        <input id="f-cancion-nvc" type="number" min="1" max="151" placeholder="N.º"></label>
+      <label><span class="lab">Canción de conclusión</span>
+        <input id="f-cancion-fin" type="number" min="1" max="151" placeholder="N.º"></label>
+    </div>
+  </section>
+
+  <!-- APERTURA -->
+  <section class="card">
+    <div class="sec-h" style="background:#6b7280">Apertura</div>
+    <div class="row">
+      <div class="selectors">
+        <label><span class="lab">Presidente</span><input id="f-presidente" placeholder="Nombre y apellido"></label>
+        <label><span class="lab">Oración (inicio)</span><input id="f-oracion-ini" placeholder="Nombre y apellido"></label>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESOROS -->
+  <section class="card">
+    <div class="sec-h" style="background:#575A5D">Tesoros de la Biblia</div>
+    <div class="row">
+      <div class="row-head">
+        <span class="num-ord" style="background:#575A5D">1</span>
+        <span class="row-name">Discurso (10 min.)</span>
+      </div>
+      <label><span class="lab">Título del discurso</span><input id="f-tit-discurso" placeholder="Título del discurso"></label>
+      <div class="selectors" style="margin-top:8px">
+        <label><span class="lab">Expositor</span><input id="f-discurso" placeholder="Nombre y apellido"></label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="row-head">
+        <span class="num-ord" style="background:#575A5D">2</span>
+        <span class="row-name">Busquemos perlas escondidas (10 min.)</span>
+      </div>
+      <div class="selectors">
+        <label><span class="lab">Expositor</span><input id="f-perlas" placeholder="Nombre y apellido"></label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="row-head">
+        <span class="num-ord" style="background:#575A5D">3</span>
+        <span class="row-name">Lectura de la Biblia (4 min.)</span>
+      </div>
+      <div class="selectors">
+        <label><span class="lab">Expositor</span><input id="f-lectura" placeholder="Nombre y apellido"></label>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEAMOS MEJORES MAESTROS -->
+  <section class="card">
+    <div class="sec-h" style="background:#BE8900">Seamos mejores maestros</div>
+    <div id="smm-rows"></div>
+    <div class="row" style="border-top:1px solid var(--line)">
+      <button class="btn" onclick="addSMM()">+ Agregar parte</button>
+    </div>
+  </section>
+
+  <!-- NUESTRA VIDA CRISTIANA -->
+  <section class="card">
+    <div class="sec-h" style="background:#7E0024">Nuestra vida cristiana</div>
+    <div id="nvc-rows"></div>
+    <div class="row" style="border-top:1px solid var(--line)">
+      <button class="btn" onclick="addNVC()">+ Agregar parte NVC</button>
+    </div>
+    <div class="row">
+      <div class="row-head">
+        <span class="num-ord" id="num-estudio" style="background:#7E0024"></span>
+        <span class="row-name">Estudio bíblico de la congregación (30 min.)</span>
+      </div>
+      <div class="selectors">
+        <label><span class="lab">Conductor</span><input id="f-conductor" placeholder="Nombre y apellido"></label>
+        <label><span class="lab">Lector</span><input id="f-lector" placeholder="Nombre y apellido"></label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="selectors">
+        <label style="flex:1 1 200px"><span class="lab">Oración (conclusión)</span><input id="f-oracion-fin" placeholder="Nombre y apellido"></label>
+      </div>
+    </div>
+  </section>
+
+  <!-- TÉCNICO -->
+  <section class="card">
+    <div class="sec-h" style="background:#374151">Asignaciones técnicas</div>
+    <div class="row">
+      <div class="selectors">
+        <label><span class="lab">Micrófono 1</span><input id="f-mic1" placeholder="Nombre y apellido"></label>
+        <label><span class="lab">Micrófono 2</span><input id="f-mic2" placeholder="Nombre y apellido"></label>
+        <label><span class="lab">Acomodador de auditorio</span><input id="f-acomodador" placeholder="Nombre y apellido"></label>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div class="love-modal-overlay" id="loveModal">
+  <div class="love-modal-box">
+    <div class="lm-emoji">💛 🙏 🌸</div>
+    <div class="lm-title">¡Gracias Cledis!</div>
+    <div class="lm-text">
+      Tu aporte es muy valioso para toda la congregación. 🌷<br><br>
+      <strong>¡Jah está muy feliz con todo lo que hacés</strong><br>
+      con tanto amor, dedicación y cariño! ✨💕
+    </div>
+    <div class="lm-btns">
+      <button class="btn" onclick="closeLoveModal(false)">Cerrar</button>
+      <button class="btn pri" onclick="closeLoveModal(true)">📄 Imprimir PDF</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+<div id="printSheet"></div>
+
+<script>
+(function () {
+  "use strict";
+
+  var smmSeq = 0, nvcSeq = 0;
+
+  /* ----- numerar partes ----- */
+  function renumber() {
+    var smm = document.querySelectorAll(".smm-row");
+    smm.forEach(function (row, i) {
+      var b = row.querySelector(".num-ord"); if (b) b.textContent = 4 + i;
+    });
+    var nvc = document.querySelectorAll(".nvc-row");
+    nvc.forEach(function (row, i) {
+      var b = row.querySelector(".num-ord"); if (b) b.textContent = 4 + smm.length + i;
+    });
+    var est = document.getElementById("num-estudio");
+    if (est) est.textContent = 4 + smm.length + nvc.length;
+  }
+
+  /* ----- agregar/quitar filas SMM ----- */
+  window.addSMM = function (titulo, mins) {
+    smmSeq++;
+    var id = "smm_" + smmSeq;
+    var div = document.createElement("div");
+    div.className = "row smm-row";
+    div.id = id;
+    div.innerHTML =
+      '<div class="row-head">'
+      + '<span class="num-ord" style="background:#BE8900">?</span>'
+      + '<input data-smm-titulo value="' + _esc(titulo || "") + '" placeholder="Título de la parte" style="flex:1 1 200px;width:auto">'
+      + '<input data-smm-min value="' + _esc(mins || "") + '" placeholder="min" type="number" min="1" max="60" style="width:64px;flex:none;text-align:center">'
+      + '<button class="icon-btn" onclick="delRow(\'' + id + '\')" title="Quitar parte">✕</button>'
+      + '</div>'
+      + '<div class="selectors">'
+      + '<label><span class="lab">Estudiante</span><input data-smm-est placeholder="Nombre y apellido"></label>'
+      + '<label><span class="lab">Ayudante</span><input data-smm-ay placeholder="Nombre y apellido"></label>'
+      + '</div>';
+    document.getElementById("smm-rows").appendChild(div);
+    renumber();
+  };
+
+  /* ----- agregar/quitar filas NVC ----- */
+  window.addNVC = function (titulo, mins) {
+    nvcSeq++;
+    var id = "nvc_" + nvcSeq;
+    var div = document.createElement("div");
+    div.className = "row nvc-row";
+    div.id = id;
+    div.innerHTML =
+      '<div class="row-head">'
+      + '<span class="num-ord" style="background:#7E0024">?</span>'
+      + '<input data-nvc-titulo value="' + _esc(titulo || "") + '" placeholder="Título de la parte" style="flex:1 1 200px;width:auto">'
+      + '<input data-nvc-min value="' + _esc(mins || "") + '" placeholder="min" type="number" min="1" max="60" style="width:64px;flex:none;text-align:center">'
+      + '<button class="icon-btn" onclick="delRow(\'' + id + '\')" title="Quitar parte">✕</button>'
+      + '</div>'
+      + '<div class="selectors">'
+      + '<label><span class="lab">Expositor</span><input data-nvc-exp placeholder="Nombre y apellido"></label>'
+      + '</div>';
+    document.getElementById("nvc-rows").appendChild(div);
+    renumber();
+  };
+
+  window.delRow = function (id) {
+    var el = document.getElementById(id); if (el) el.remove();
+    renumber();
+  };
+
+  /* ----- limpiar ----- */
+  window.limpiar = function () {
+    if (!confirm("¿Limpiar todos los campos?")) return;
+    document.querySelectorAll("main input").forEach(function (inp) { inp.value = ""; });
+    document.getElementById("smm-rows").innerHTML = "";
+    document.getElementById("nvc-rows").innerHTML = "";
+    smmSeq = 0; nvcSeq = 0;
+    addSMM(); addSMM(); addSMM();
+    addNVC();
+    document.getElementById("f-cong").value = "Pozo del Molle";
+    toast("Formulario limpiado");
+  };
+
+  /* ----- helpers ----- */
+  function _esc(s) {
+    return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+  }
+  function get(id) { var el = document.getElementById(id); return el ? el.value.trim() : ""; }
+  function nm(v) { return v || "[ ]"; }
+  function inputVal(el) { return el ? el.value.trim() : ""; }
+
+  /* ----- construir la hoja S-140 ----- */
+  function buildSheet() {
+    var cong      = get("f-cong");
+    var semana    = get("f-sem");
+    var lectura   = get("f-lec");
+    var pres      = nm(get("f-presidente"));
+    var orIni     = nm(get("f-oracion-ini"));
+    var cIni      = get("f-cancion-ini");
+    var cNvc      = get("f-cancion-nvc");
+    var cFin      = get("f-cancion-fin");
+    var titDisc   = get("f-tit-discurso") || "[Título]";
+    var discExp   = nm(get("f-discurso"));
+    var perlasExp = nm(get("f-perlas"));
+    var lectExp   = nm(get("f-lectura"));
+    var condEst   = nm(get("f-conductor"));
+    var lectorEst = nm(get("f-lector"));
+    var orFin     = nm(get("f-oracion-fin"));
+    var mic1      = nm(get("f-mic1"));
+    var mic2      = nm(get("f-mic2"));
+    var acomo     = nm(get("f-acomodador"));
+
+    /* recopilar filas SMM */
+    var smmData = [];
+    document.querySelectorAll(".smm-row").forEach(function (row, i) {
+      smmData.push({
+        titulo: inputVal(row.querySelector("[data-smm-titulo]")),
+        mins:   inputVal(row.querySelector("[data-smm-min]")),
+        est:    nm(inputVal(row.querySelector("[data-smm-est]"))),
+        ay:     nm(inputVal(row.querySelector("[data-smm-ay]"))),
+        num:    4 + i
+      });
+    });
+
+    /* recopilar filas NVC */
+    var nvcData = [];
+    document.querySelectorAll(".nvc-row").forEach(function (row, i) {
+      nvcData.push({
+        titulo: inputVal(row.querySelector("[data-nvc-titulo]")),
+        mins:   inputVal(row.querySelector("[data-nvc-min]")),
+        exp:    nm(inputVal(row.querySelector("[data-nvc-exp]"))),
+        num:    4 + smmData.length + i
+      });
+    });
+
+    var estNum = 4 + smmData.length + nvcData.length;
+
+    /* estilos de celdas (idénticos al app original) */
+    var F      = "font-family:Calibri,'Segoe UI',Arial,sans-serif";
+    var lcell  = "padding:2px 4px;vertical-align:top;font-size:11pt;color:#1F1F1F";
+    var rlbl   = "padding:2px 6px;vertical-align:middle;font-size:9pt;font-weight:bold;color:#575A5D;text-align:right;white-space:nowrap";
+    var rval   = "padding:2px 4px;vertical-align:middle;font-size:11pt;color:#1F1F1F";
+
+    function row(parte, bullet, rl, rv, num) {
+      return "<tr>"
+        + "<td style=\"" + lcell + "\">"
+        + (num != null ? "<span style=\"font-size:11pt;font-weight:400;color:#1F1F1F;margin-right:3px\">" + num + ".</span>" : "")
+        + (bullet ? "&#8226;&nbsp;" : "") + parte + "</td>"
+        + "<td style=\"" + rlbl + "\">" + (rl || "") + "</td>"
+        + "<td style=\"" + rval + "\">" + (rv != null ? rv : "") + "</td>"
+        + "</tr>";
+    }
+    function band(label, color, rightHdr) {
+      return "<tr>"
+        + "<td style=\"background:" + color + ";color:#fff;font-weight:bold;font-size:10pt;padding:3px 8px;letter-spacing:.3px;-webkit-print-color-adjust:exact;print-color-adjust:exact\">" + label + "</td>"
+        + "<td style=\"padding:3px 6px\"></td>"
+        + "<td style=\"color:#575A5D;font-weight:bold;font-size:9pt;padding:3px 4px\">" + (rightHdr || "") + "</td>"
+        + "</tr>";
+    }
+    function spacer(h) {
+      return "<tr><td colspan=\"3\" style=\"height:" + h + "px;font-size:1px\">&nbsp;</td></tr>";
+    }
+
+    var b = "";
+    b += row("Canci&#243;n" + (cIni ? " &#8212; N.&#186; " + _esc(cIni) : ""), true, "Oraci&#243;n:", orIni);
+    b += row("Palabras de introducci&#243;n (1 min.)", true, "", "");
+    b += spacer(4);
+
+    b += band("TESOROS DE LA BIBLIA", "#575A5D", "Auditorio principal");
+    b += row(_esc(titDisc) + " (10 min.)", true, "", discExp, 1);
+    b += row("Busquemos perlas escondidas (10 min.)", true, "", perlasExp, 2);
+    b += row("Lectura de la Biblia (4 min.)", true, "", lectExp, 3);
+    b += spacer(4);
+
+    b += band("SEAMOS MEJORES MAESTROS", "#BE8900", "Auditorio principal");
+    smmData.forEach(function (it) {
+      var parte = (_esc(it.titulo) || "[Parte]") + (it.mins ? " (" + _esc(it.mins) + " mins.)" : "");
+      b += row(parte, true, "Estudiante/Ayudante:", it.est + " / " + it.ay, it.num);
+    });
+    b += spacer(4);
+
+    b += band("NUESTRA VIDA CRISTIANA", "#7E0024", "");
+    b += row("Canci&#243;n" + (cNvc ? " &#8212; N.&#186; " + _esc(cNvc) : ""), true, "", "");
+    nvcData.forEach(function (it) {
+      var parte = (_esc(it.titulo) || "[Parte]") + (it.mins ? " (" + _esc(it.mins) + " mins.)" : "");
+      b += row(parte, true, "", it.exp, it.num);
+    });
+    b += row("Estudio b&#237;blico de la congregaci&#243;n (30 min.)", true, "Conductor/Lector:", condEst + " / " + lectorEst, estNum);
+    b += row("Palabras de conclusi&#243;n (3 min.)", true, "", "");
+    b += row("Canci&#243;n" + (cFin ? " &#8212; N.&#186; " + _esc(cFin) : ""), true, "Oraci&#243;n:", orFin);
+
+    /* encabezado del documento */
+    var titulo =
+      "<table style=\"width:100%;border-collapse:collapse;border-bottom:3px double #7E0024;margin-bottom:8px\"><tr>"
+      + "<td style=\"font-size:11pt;font-weight:bold;color:#1F1F1F;vertical-align:middle;padding-bottom:3px;padding-right:24px;white-space:nowrap\">Congregaci&#243;n " + _esc(cong) + "</td>"
+      + "<td style=\"font-family:Cambria,Georgia,serif;font-size:16pt;font-weight:bold;color:#1F1F1F;text-align:right;vertical-align:middle;padding-bottom:3px;white-space:nowrap\">Programa para la reuni&#243;n de entre semana</td>"
+      + "</tr></table>";
+
+    var headerRow =
+      "<tr><td style=\"font-size:11pt;font-weight:bold;color:#1F1F1F;padding:2px 4px;white-space:nowrap\">"
+      + (semana ? _esc(semana) + " &nbsp;|&nbsp; " : "") + "LECTURA SEMANAL DE LA BIBLIA</td>"
+      + "<td style=\"" + rlbl + "\">Presidente:</td>"
+      + "<td style=\"" + rval + "\">" + pres + "</td></tr>"
+      + "<tr><td colspan=\"3\" style=\"font-size:11pt;font-weight:bold;color:#1F1F1F;padding:0 4px 2px\">" + _esc(lectura) + "</td></tr>"
+      + spacer(2);
+
+    var footer =
+      "<div style=\"margin-top:26px;font-size:11pt;font-weight:bold;color:#1F1F1F\">"
+      + "Microfonistas: " + mic1 + " / " + mic2
+      + "<br><br>Acomodador de auditorio: " + acomo + "</div>"
+      + "<div style=\"margin-top:34px;font-size:8pt;color:#575A5D\">S-140-S &nbsp;&nbsp; 11/20</div>";
+
+    return "<div style=\"" + F + ";color:#1F1F1F\">" + titulo
+      + "<table style=\"width:100%;border-collapse:collapse;table-layout:fixed\">"
+      + "<colgroup><col style=\"width:46%\"><col style=\"width:20%\"><col style=\"width:auto\"></colgroup>"
+      + headerRow + b + "</table>" + footer + "</div>";
+  }
+
+  /* ----- generar PDF ----- */
+  window.generarPDF = function () {
+    document.getElementById("loveModal").classList.add("open");
+  };
+
+  window.closeLoveModal = function (doPrint) {
+    document.getElementById("loveModal").classList.remove("open");
+    if (doPrint) {
+      document.getElementById("printSheet").innerHTML = buildSheet();
+      var prev = document.title;
+      var sem  = get("f-sem");
+      document.title = ((sem || "reunion") + " . S-140").replace(/[\\/:*?"<>|]/g, "");
+      window.print();
+      document.title = prev;
+    }
+  };
+
+  /* ----- toast ----- */
+  var tt;
+  function toast(m) {
+    var t = document.getElementById("toast");
+    t.textContent = m; t.classList.add("show");
+    clearTimeout(tt); tt = setTimeout(function () { t.classList.remove("show"); }, 2600);
+  }
+
+  /* ----- zoom de texto ----- */
+  var zoomLevels = [100, 115, 130, 150];
+  var currentZoom = 2; // arranca en A++ (índice 2 = 130%)
+  window.setZoom = function (level) {
+    currentZoom = level - 1;
+    document.body.style.zoom = zoomLevels[currentZoom] + "%";
+    for (var i = 1; i <= 4; i++) {
+      var btn = document.getElementById("z" + i);
+      if (btn) btn.classList.toggle("active", i === level);
+    }
+  };
+  document.body.style.zoom = zoomLevels[currentZoom] + "%";
+
+  /* ----- toggle ayuda ----- */
+  var helpVisible = true;
+  window.toggleHelp = function () {
+    helpVisible = !helpVisible;
+    var body = document.getElementById("helpBody");
+    var txt  = document.getElementById("helpToggleText");
+    body.style.display = helpVisible ? "" : "none";
+    txt.textContent    = helpVisible ? "▲ Ocultar" : "▼ Ver instrucciones";
+  };
+
+  /* ----- inicializar con filas por defecto ----- */
+  addSMM(); addSMM(); addSMM();
+  addNVC();
+
+})();
+</script>
+</body>
+</html>
