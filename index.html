@@ -167,14 +167,6 @@ main{padding:20px 28px 80px;max-width:940px;margin:0 auto;display:flex;flex-dire
   🌸 ¡Hola Cledis! 🌼 &nbsp; No olvides que te queremos mucho 💕 &nbsp; 🌺 ✨ 🤍
 </div>
 
-<header class="top">
-  <div class="grid-enc">
-    <label><span class="lab">Congregación</span><input id="f-cong" value="Pozo del Molle"></label>
-    <label><span class="lab">Semana / fecha</span><input id="f-sem" placeholder="Ej. 9-15 jun. 2025"></label>
-    <label class="enc-full"><span class="lab">Lectura semanal de la Biblia (libro y capítulos)</span><input id="f-lec" placeholder="Ej. Jeremías 4-6"></label>
-  </div>
-</header>
-
 <div class="zoom-bar">
   <span class="zoom-label">👁️ Tamaño del texto:</span>
   <button class="zoom-btn" id="z1" onclick="setZoom(1)">A</button>
@@ -185,43 +177,20 @@ main{padding:20px 28px 80px;max-width:940px;margin:0 auto;display:flex;flex-dire
 </div>
 
 <div class="toolbar">
-  <button class="btn" onclick="limpiar()">Limpiar todo</button>
+  <button class="btn" onclick="limpiar()">Borrar todo lo que hayas escrito</button>
   <span style="flex:1"></span>
-  <button class="btn pri" onclick="generarPDF()">Imprimir / Generar PDF</button>
+  <button class="btn pri" onclick="generarPDF()">📄 Descargar PDF</button>
 </div>
 
-<main>
-
-  <!-- AYUDA PARA CLEDIS -->
-  <div class="help-card">
-    <div class="help-card-header" onclick="toggleHelp()">
-      <span style="font-size:20px">📋</span>
-      <span class="help-card-title">¿Cómo completar el formulario? — Leé esto primero</span>
-      <span class="help-card-toggle" id="helpToggleText">▲ Ocultar</span>
-    </div>
-    <div class="help-body" id="helpBody">
-      <div class="help-step">
-        <span class="help-icon">1️⃣</span>
-        <span class="help-text"><strong>Arriba de todo</strong> completá la semana (por ejemplo: <em>"16-22 jun. 2025"</em>) y la lectura de la Biblia de esa semana (por ejemplo: <em>"Jeremías 4-6"</em>).</span>
-      </div>
-      <div class="help-step">
-        <span class="help-icon">2️⃣</span>
-        <span class="help-text"><strong>En cada recuadro de colores</strong> escribí el nombre y apellido de la persona asignada. Hacé clic dentro del casillero blanco y escribí.</span>
-      </div>
-      <div class="help-step">
-        <span class="help-icon">3️⃣</span>
-        <span class="help-text">En las secciones <strong>"Seamos mejores maestros"</strong> y <strong>"Nuestra vida cristiana"</strong>, si necesitás más lugares usá el botón <strong>"+ Agregar parte"</strong>.</span>
-      </div>
-      <div class="help-step">
-        <span class="help-icon">4️⃣</span>
-        <span class="help-text">Cuando terminés de completar todo, apretá el botón verde <strong>"Imprimir / Generar PDF"</strong> que está en la barra de arriba. ¡Y listo!</span>
-      </div>
-      <div class="help-tip">
-        <span style="font-size:20px">💡</span>
-        <span><strong>¿Te equivocaste?</strong> No te preocupes. Podés hacer clic sobre cualquier casillero y corregirlo. Si querés borrar todo y empezar de nuevo, apretá el botón <strong>"Limpiar todo"</strong>.</span>
-      </div>
-    </div>
+<header class="top">
+  <div class="grid-enc">
+    <label><span class="lab">Congregación</span><input id="f-cong" value="Pozo del Molle"></label>
+    <label><span class="lab">Semana / fecha</span><input id="f-sem" placeholder="Ej. 9-15 jun. 2025"></label>
+    <label class="enc-full"><span class="lab">Lectura semanal de la Biblia (libro y capítulos)</span><input id="f-lec" placeholder="Ej. Jeremías 4-6"></label>
   </div>
+</header>
+
+<main>
 
   <!-- CANCIONES -->
   <section class="card">
@@ -338,7 +307,7 @@ main{padding:20px 28px 80px;max-width:940px;margin:0 auto;display:flex;flex-dire
     </div>
     <div class="lm-btns">
       <button class="btn" onclick="closeLoveModal(false)">Cerrar</button>
-      <button class="btn pri" onclick="closeLoveModal(true)">📄 Imprimir PDF</button>
+      <button class="btn pri" onclick="closeLoveModal(true)">📄 Descargar PDF</button>
     </div>
   </div>
 </div>
